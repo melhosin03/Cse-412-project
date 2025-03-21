@@ -261,6 +261,7 @@ ALTER SEQUENCE public.orders_order_id_seq OWNED BY public.orders.order_id;
 
 CREATE TABLE public.payments (
     transaction_id integer NOT NULL,
+    order_id integer,
     payment_date date DEFAULT CURRENT_DATE,
     payment_status character varying(20),
     amount_paid numeric(10,2) NOT NULL,
@@ -501,11 +502,11 @@ ALTER TABLE ONLY public.orders
 
 
 --
--- Name: orders orders_transaction_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: noah
+-- Name: payments payments_order_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: noah
 --
 
-ALTER TABLE ONLY public.orders
-    ADD CONSTRAINT orders_transaction_id_fkey FOREIGN KEY (transaction_id) REFERENCES public.payments(transaction_id) ON DELETE SET NULL;
+ALTER TABLE ONLY public.payments
+    ADD CONSTRAINT payments_order_id_fkey FOREIGN KEY (order_id) REFERENCES public.orders(order_id) ON DELETE CASCADE;
 
 
 --
