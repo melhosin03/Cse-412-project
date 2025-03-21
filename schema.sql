@@ -64,7 +64,10 @@ CREATE TABLE public.customers (
     customer_id integer NOT NULL,
     name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
-    password character varying(255) NOT NULL
+    password character varying(255) NOT NULL,
+    phone_number character varying(20),
+    address text,
+    is_registered boolean DEFAULT false
 );
 
 
