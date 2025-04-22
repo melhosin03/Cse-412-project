@@ -1,0 +1,5 @@
+
+
+# Backend-specific
+/backend/node_modules/
+/backend/build/
